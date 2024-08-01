@@ -32,6 +32,24 @@ function ChecarEmail() {
     }
 }
 ```
+# Comentarios
+* Função ChecarEmail(): Declara uma função chamada ChecarEmail que será chamada para validar o email inserido.
+
+* document.forms[0]: Acessa o primeiro formulário no documento HTML. document.forms é uma coleção de todos os formulários na página, e [0] seleciona o primeiro formulário da coleção.
+
+* document.forms[0].email.value: Acessa o valor do campo de entrada com o nome email no primeiro formulário. value é a propriedade que contém o texto inserido pelo usuário.
+
+* == "": Verifica se o campo de email está vazio.
+
+* indexOf("@") == -1: Verifica se o caractere @ não está presente no valor do campo de email. indexOf retorna o índice da primeira ocorrência do caractere, ou -1 se o caractere não for encontrado.
+
+* indexOf(".") == -1: Verifica se o caractere . não está presente no valor do campo de email, seguindo a mesma lógica do ponto anterior.
+
+* alert("Por favor informe um email valido"): Exibe uma mensagem de alerta para o usuário caso o valor do email não passe na validação.
+
+* return false: Retorna false para indicar que a validação falhou. Em muitos casos, isso pode prevenir o envio do formulário se a função for usada em um manipulador de eventos onsubmit.
+
+* alert("Email informado com sucesso!"): Exibe uma mensagem de sucesso se o email passar na validação.
 # Projeto de CPF
 O proejeto do CPF, teve a **funcionalidade** de apredizagem de como dar mais passos para o futuro do JavaScript e logo depois para o PHP, conseguindo provar se esta certo e errado.
 ## Funcionalidades
@@ -102,6 +120,40 @@ soma + parseInt( cpf.substring(i - 1, i))* (12 - i);
  return true;
 }
 ```
+# Comentarios
+* Escutador de Evento de Submit:
+
+document.getElementById("cpfForm").addEventListener("submit", function (event) {...}: Adiciona um evento para o formulário com o ID cpfForm. Quando o formulário é submetido, a função é executada.
+event.preventDefault(): Impede a submissão padrão do formulário, permitindo que a validação seja feita sem recarregar a página.
+Obtenção do Valor do CPF:
+
+const cpf = document.getElementById("cpf").value;: Obtém o valor do campo de entrada de CPF.
+Validação do CPF:
+
+if (validateCPF(cpf)) {...}: Chama a função validateCPF para validar o CPF e exibe uma mensagem com base na validade do CPF.
+Função validateCPF(cpf):
+
+cpf.replace(/[^\d]+/g, ''): Remove caracteres que não são dígitos do CPF (ex: pontos, traços).
+if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)): Verifica se o CPF tem exatamente 11 dígitos e se todos os dígitos são iguais. Se verdadeiro, o CPF é inválido.
+
+## Validação dos Dígitos Verificadores:
+* Primeiro dígito verificador:
+for (let i = 1; i < 9; i++) {...}: Calcula a soma para o primeiro dígito verificador.
+
+resto = (soma * 10) % 11: Calcula o resto da divisão para determinar o primeiro dígito verificador.
+
+Ajusta resto se necessário e compara com o dígito correspondente no CPF.
+
+* Segundo dígito verificador:
+for (let i = 1; i <= 10; i++) {...}: Calcula a soma para o segundo dígito verificador.
+
+resto = (soma * 10) % 11: Calcula o resto da divisão para determinar o segundo dígito verificador.
+
+Ajusta resto se necessário e compara com o dígito correspondente no CPF.
+
+## Resultado da Validação:
+
+Se ambos os dígitos verificadores forem válidos, a função retorna true, indicando que o CPF é válido.
 # Ferramentas utilizadas
 ![CSS3](https://camo.githubusercontent.com/472c222e8f240a48ae51cd9b082a1b857be809dcd851a25150890c2da50c13a5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f435353332d3135373242363f7374796c653d666f722d7468652d6261646765266c6f676f3d63737333266c6f676f436f6c6f723d7768697465)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
